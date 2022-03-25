@@ -1,5 +1,5 @@
 # Horrible code, but it's a demo, no judging please.
-import mariadb 
+import mysql.connector
 from flask import Flask, render_template
 
 app = Flask(__name__, static_folder="")
