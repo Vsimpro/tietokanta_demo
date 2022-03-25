@@ -1,0 +1,55 @@
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #202020;
+    color: #eee;
+    font-family: 'pc98';
+}
+
+
+head {
+    padding-top: 8%;
+    text-shadow: 3px 3px rgb(105, 105, 105);
+}
+
+h1 {
+    padding: 5%;
+    background-color: #9b2525;
+    font-size: 300%;
+    text-shadow: 4px 4px #202020;
+    box-shadow: 8px 8px #424242;
+    width: 55%;
+}
+
+a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+  a:hover,
+  a:active {
+    color: rgb(201, 201, 201);
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;    
+}
+
+p {
+    font-size: 200%;
+    border-bottom: solid 4px #ffffff;
+    width: 20%;
+}
+
+li {
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    width: 10%;
+    font-size: 150%;
+    border-bottom: solid 2px #ffffff;
+}

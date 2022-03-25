@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="{{ url_for("static", filename="templates/css/styles.css") }}" rel="stylesheet">
+</head>
+<body>
+    <a href="/"> <- takaisin etusivulle. </a>
+    <h1> Autokauppa OY </h1>
+
+    <p> Auto: {{ data[0][0]}} {{ data[0][1]}}, ajettu {{ data[0][2]}} km. <br> <strong> Hinta: </strong>{{ data[0][3]}}€  </p>
+    <ul>
+        <li> tilavuus: {{ data[0][4]}},</li>
+        <li> vetotapa: {{ data[0][5]}}veto,</li> 
+        <li> teho: {{ data[0][6]}}w</li>
+        <li> Ovet: {{ data[0][7]}},</li>
+        <li> Löpö: {{ data[0][8]}}, </li>
+        <li>Vaihteisto: {{ data[0][9]}} </li>
+    </ul>
+</body>
+</html>
