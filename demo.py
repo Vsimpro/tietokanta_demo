@@ -13,7 +13,7 @@ conn = mysql.connector.connect(
     database="Autokauppa")
 
 # Global variables
-cursor = conn.cursor() ) 
+cursor = conn.cursor()  
 
 
 def database_handle(target,car_id):
