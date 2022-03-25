@@ -5,7 +5,7 @@ from flask import Flask, render_template
 app = Flask(__name__, static_folder="")
 
 # Credentials to connect into mariaDB,
-conn = mariadb.connect(
+conn = mysql.connector.connect(
     user="",
     password="",
     host="",
@@ -13,7 +13,7 @@ conn = mariadb.connect(
     database="Autokauppa")
 
 # Global variables
-cur = conn.cursor() 
+cursor = conn.cursor() ) 
 
 
 def database_handle(target,car_id):
@@ -26,25 +26,27 @@ def database_handle(target,car_id):
 
     # All Avialable cars
     if target == "cars":
-        cur.execute("""
+       query = """
 SELECT A.malli, Valmistaja.nimi, Inventaario.hinta, Inventaario.auto_id 
 FROM Autot A JOIN Inventaario ON auto_id = A.id, Autot B JOIN Valmistaja ON B.valmistaja_id = Valmistaja.id
 WHERE Inventaario.kpl = 1 AND A.id = B.id ;
-""") 
+"""
     
     # Does the car exist and is it avialable
     if target == "car_exists":
-        cur.execute("SELECT auto_id FROM Inventaario I WHERE kpl != 0;")
+        query = "SELECT auto_id FROM Inventaario I WHERE kpl != 0;"
         
     # Further details on the selected car;
     if target == "car_details":
-        cur.execute(f"""SELECT A.malli, Valmistaja.nimi, Inventaario.kilometrit, Inventaario.hinta,
+        query =f"""SELECT A.malli, Valmistaja.nimi, Inventaario.kilometrit, Inventaario.hinta,
 A.moottoritilavuus, A.vetotapa, A.teho, A.ovet, A.polttoaine, A.vaihteisto
 FROM Autot A JOIN Inventaario ON auto_id = A.id, Autot B JOIN Valmistaja ON B.valmistaja_id = Valmistaja.id
 WHERE A.id = B.id AND A.id = {car_id} AND Inventaario.kpl > 0;
-""")
+""" 
 
     # Compile the QUERY into a DICT
+    cursor.execute(query)
+    cur = cursor.fetchall()
     for i in cur:
         data[count] = i
         count += 1
